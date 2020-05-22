@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import TableRow from './TableRow';
+import TableData from './TableData';
 
 class Table extends Component {
   render() {
@@ -6,9 +8,9 @@ class Table extends Component {
     let lastCategory = null;
     this.props.products.forEach((product) => {
       if (lastCategory !== product.category) {
-        rows.push(product.category.toUpperCase());
+        rows.push(<TableRow category={product.category} />);
       }
-      rows.push(<div>{product.name + ' ' + product.price}</div>);
+      rows.push(<TableData product={product} />);
       lastCategory = product.category;
     });
     return (
