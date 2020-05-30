@@ -13,13 +13,13 @@ const PRODUCTS = [
   {
     category: 'Sporting Goods',
     price: '$9.99',
-    stocked: true,
+    stocked: false,
     name: 'Baseball',
   },
   {
     category: 'Sporting Goods',
     price: '$29.99',
-    stocked: false,
+    stocked: true,
     name: 'Basketball',
   },
   {
@@ -34,7 +34,12 @@ const PRODUCTS = [
     stocked: false,
     name: 'iPhone 5',
   },
-  { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' },
+  {
+    category: 'Electronics',
+    price: '$199.99',
+    stocked: true,
+    name: 'Nexus 7 ',
+  },
 ];
 
 ReactDOM.render(
