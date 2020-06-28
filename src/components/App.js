@@ -36,12 +36,7 @@ const yLabels = [
   '22:00',
   '23:00',
 ];
-// const data = new Array(yLabels.length)
-//   .fill(0)
-//   .map(() =>
-//     new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100))
-//   );
-// console.log('data: ', data);
+
 const data = [
   [7, 1, 2, 3, 4, 5, 6],
   [7, 1, 2, 3, 4, 5, 6],
