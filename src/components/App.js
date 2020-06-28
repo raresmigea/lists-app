@@ -78,7 +78,7 @@ export default function () {
         height={45}
         width={50}
         onClick={(x, y) => alert(`Clicked ${x}, ${y}`)}
-        cellStyle={(background, value, min, max, data, x, y) => ({
+        cellStyle={(value, min, max) => ({
           background: `rgb(0, 151, 230, ${1 - (max - value) / (max - min)})`,
           fontSize: '11.5px',
           color: '#444',
