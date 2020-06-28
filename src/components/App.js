@@ -1,48 +1,95 @@
-import React, { Component } from 'react';
-import Table from './Table';
-import SearchBar from './SearchBar';
+import React from 'react';
+import HeatMap from 'react-heatmap-grid';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filterText: '',
-      inStockOnly: false,
-    };
+const xLabels = new Array(6).fill(0).map((_, i) => `${i}`);
 
-    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-    this.handleInStockChange = this.handleInStockChange.bind(this);
-  }
+console.log('xLabels: ', xLabels);
 
-  handleFilterTextChange(filterText) {
-    this.setState({
-      filterText: filterText,
-    });
-  }
+// Display only even labels
+const xLabelsVisibility = new Array(24)
+  .fill(0)
+  .map((_, i) => (i % 2 === 0 ? true : false));
 
-  handleInStockChange(inStockOnly) {
-    this.setState({
-      inStockOnly: inStockOnly,
-    });
-  }
+const yLabels = [
+  '00:00',
+  '01:00',
+  '02:00',
+  '03:00',
+  '04:00',
+  '05:00',
+  '06:00',
+  '07:00',
+  '08:00',
+  '09:00',
+  '10:00',
+  '11:00',
+  '12:00',
+  '13:00',
+  '14:00',
+  '15:00',
+  '16:00',
+  '17:00',
+  '18:00',
+  '19:00',
+  '20:00',
+  '21:00',
+  '22:00',
+  '23:00',
+];
+// const data = new Array(yLabels.length)
+//   .fill(0)
+//   .map(() =>
+//     new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100))
+//   );
+// console.log('data: ', data);
+const data = [
+  [7, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [0, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+  [7, 1, 2, 3, 4, 5, 6],
+];
 
-  render() {
-    return (
-      <div>
-        <SearchBar
-          filterText={this.state.filterText}
-          inStockOnly={this.state.inStockOnly}
-          onFilterTextChange={this.handleFilterTextChange}
-          onInStockChange={this.handleInStockChange}
-        />
-        <Table
-          products={this.props.products}
-          filterText={this.state.filterText}
-          inStockOnly={this.state.inStockOnly}
-        />
-      </div>
-    );
-  }
+export default function () {
+  return (
+    <div style={{ fontSize: '13px' }}>
+      <HeatMap
+        xLabels={xLabels}
+        yLabels={yLabels}
+        xLabelsLocation={'bottom'}
+        xLabelsVisibility={xLabelsVisibility}
+        xLabelWidth={60}
+        data={data}
+        squares
+        height={45}
+        width={50}
+        onClick={(x, y) => alert(`Clicked ${x}, ${y}`)}
+        cellStyle={(background, value, min, max, data, x, y) => ({
+          background: `rgb(0, 151, 230, ${1 - (max - value) / (max - min)})`,
+          fontSize: '11.5px',
+          color: '#444',
+        })}
+        cellRender={(value) => value && <div>{value}</div>}
+      />
+    </div>
+  );
 }
-
-export default App;
