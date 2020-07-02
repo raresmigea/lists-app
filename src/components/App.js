@@ -3,8 +3,6 @@ import HeatMap from 'react-heatmap-grid';
 
 const xLabels = new Array(6).fill(0).map((_, i) => `${i}`);
 
-console.log('xLabels: ', xLabels);
-
 // Display only even labels
 const xLabelsVisibility = new Array(24)
   .fill(0)
