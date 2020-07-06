@@ -1,5 +1,6 @@
 import React from 'react';
 import HeatMap from 'react-heatmap-grid';
+import SearchBar from './SearchBar';
 
 const xLabels = new Array(6).fill(0).map((_, i) => `${i}`);
 
@@ -65,6 +66,7 @@ const data = [
 export default function () {
   return (
     <div style={{ fontSize: '13px' }}>
+      <SearchBar />
       <HeatMap
         xLabels={xLabels}
         yLabels={yLabels}
