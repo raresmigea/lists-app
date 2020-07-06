@@ -7,16 +7,16 @@ class SearchBar extends Component {
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
     this.handleInStockChange = this.handleInStockChange.bind(this);
     this.state = {
-      displayColorPicker: false,
+      background: '#fff',
     };
   }
 
-  handleClick = () => {
-    this.setState({ displayColorPicker: !this.state.displayColorPicker });
+  handleChange = (color) => {
+    this.setState({ background: color.hex });
   };
 
-  handleClose = () => {
-    this.setState({ displayColorPicker: false });
+  handleChangeComplete = (color) => {
+    this.setState({ background: color.hex });
   };
 
   handleFilterTextChange(e) {
@@ -28,27 +28,12 @@ class SearchBar extends Component {
   }
 
   render() {
-    const popover = {
-      position: 'absolute',
-      zIndex: '2',
-    };
-    const cover = {
-      position: 'fixed',
-      top: '0px',
-      right: '0px',
-      bottom: '0px',
-      left: '0px',
-    };
     return (
-      <div>
-        <button onClick={this.handleClick}>Pick Color</button>
-        {this.state.displayColorPicker ? (
-          <div style={popover}>
-            <div style={cover} onClick={this.handleClose} />
-            <ChromePicker />
-          </div>
-        ) : null}
-      </div>
+      <ChromePicker
+        color={this.state.background}
+        onChange={this.handleChange}
+        onChangeComplete={this.handleChangeComplete}
+      />
     );
   }
 }
