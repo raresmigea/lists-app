@@ -6,7 +6,7 @@ class TableData extends Component {
     const name = stock ? (
       this.props.product.name
     ) : (
-      <span style={{ color: 'red' }}> {this.props.product.name}</span>
+      <span style={{ color: '#01F02E' }}> {this.props.product.name}</span>
     );
     return (
       <tr>
