@@ -7,7 +7,7 @@ class SearchBar extends Component {
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
     this.handleInStockChange = this.handleInStockChange.bind(this);
     this.state = {
-      background: '#fff',
+      background: '#FFFFFF',
     };
   }
 
